@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Static Template</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img />
+        <nav>
+          <input type="checkbox" id="menu-toggle-check" />
+          <div class="menu-toggle-button">
+            <label for="menu-toggle-check" class="open">&#8801;</label>
+            <label for="menu-toggle-check" class="close">&times;</label>
+          </div>
+          <ul>
+            <li><a>Home</a></li>
+            <li><a class="active">About</a></li>
+            <li><a>Product</a></li>
+            <li><a>Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <!--
+        <article>
+          <blockquote>
+            <cite>
+              You can resize the browser viewport and change between dark and
+              light mode to see how responsive it is
+            </cite>
+          </blockquote>
+        </article>
+        -->
+        <article>
+          <h1>Temperature Conversion</h1>
+          <section class="input-section">
+            <label for="input-field">Celcius</label>
+            <input type="number" id="input-field"/>
+            <div class="input-section-button">
+              <button>Conversion</button>
+              <button>Reset</button>
+              <button>Reverse</button>
+            </div>
+          </section>
+        </article>
+      </main>
+      <footer>
+        Crafted with &hearts; by Omiex
+      </footer>
+    </div>
+  </body>
+</html>
