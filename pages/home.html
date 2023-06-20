@@ -3,12 +3,23 @@
   <form action="" onsubmit="event.preventDefault()" onreset="reverseChange()">
     <section class="input-section">
       <h2 id="conversion-mode">Celsius to Fahrenheit</h2>
+      <input type="checkbox" id="reverse-check" onchange="reverseChange(event)" />
+      <div class="input-section-field">
+        <div class="input-field c">
           <input type="number" id="c-input-field" />
+        </div>
+        <label class="button" for="reverse-check">Reverse</label>
+        <div class="input-field f">
           <input type="number" id="f-input-field" />
+        </div>
+      </div>
       <div class="input-section-button">
         <button class="button" type="submit">Conversion</button>
         <button class="button" type="reset">Reset</button>
       </div>
     </section>
   </form>
+  <section class="explanation-section">
+    ini adalah section explanation
+  </section>
 </div>

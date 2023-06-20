@@ -23,6 +23,9 @@ function changePage (page) {
 
       return page; // send page data to next step
     })
+    .then((page) => {
+      if (page === 'home') reverseChange(); // make initial condition to home page
+    })
 }
 
 // page to override error pages
@@ -32,8 +35,34 @@ const errorPage = (response) => {
   const cssText = [
     'display: grid',
     'justify-content: center',
+    'align-items: center',
+    'height: 100%',
+    'font-size: 2rem',
+    'font-weight: 200',
   ]
   container.style.cssText = cssText.join('; ');
   container.innerHTML = `${response.status}: ${response.statusText}`;
   return container.outerHTML;
+}
+
+/********** used in home page (main page) **********/
+
+// run when the reverse button clicked
+function reverseChange (event = null) {
+  // get DOM
+  const conversionMode = document.getElementById('conversion-mode');
+  const celsius = document.getElementById('c-input-field');
+  const fahrenheit = document.getElementById('f-input-field');
+  const checked = event ? event.target.checked : false;
+
+  // change conversion mode name
+  conversionMode.innerHTML = checked ? 'Fahrenheit to Celsius' : 'Celsius to Fahrenheit'
+
+  // disable/enable field
+  celsius.disabled = checked;
+  fahrenheit.disabled = !checked;
+
+  // focus to enabled field
+  if (!checked) celsius.focus();
+  else fahrenheit.focus();
 }

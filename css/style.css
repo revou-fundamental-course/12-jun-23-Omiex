@@ -1,23 +1,126 @@
-/* MARK: TAG */
-
-body {
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.input-section,
+.explanation-section {
+  margin: auto;
+  margin-bottom: 2rem;
+  max-width: 720px;
 }
 
-h1 {
+.input-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-section h2 {
   text-align: center;
 }
 
-label {
-  margin-bottom: .5rem;
-  margin-top: 1rem;
-  font-weight: 500;
+#reverse-check {
+  display: none;
 }
 
-button {
+.input-section-field {
+  display: grid;
+  grid-template-areas: "c" "reverse" "f";
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+
+#reverse-check:checked ~ .input-section-field {
+  grid-template-areas: "f" "reverse" "c";
+}
+
+.input-section-field label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  margin: 0;
+  border-radius: .5rem;
+}
+
+.input-field {
+  position: relative;
+}
+
+.input-field.c {
+  grid-area: c;
+}
+
+.input-field.f {
+  grid-area: f;
+}
+
+.input-field::after {
+  position: absolute;
+  right: 1rem;
+  height: 3rem;
+  line-height: 3rem;
+  font-weight: 600;
+}
+
+.input-field.c::after {
+  content: '\00b0 C';
+}
+
+.input-field.f::after {
+  content: '\00b0 F';
+}
+
+.input-field input {
+  width: 100%;
+  height: 3rem;
+  padding: 0 2.2rem 0 1rem;
+
+  line-height: 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: right;
+  color: var(--foreground-color);
+  background-color: var(--background-color);
+  outline: 2px solid transparent;
+  border: 1px solid rgb(112 112 112 / .5);
+  border-radius: .5rem;
+
+  transition: 200ms;
+}
+
+.input-field input:focus {
+  outline: 2px solid rgb(0 128 176 / .5);
+}
+
+.input-field input:disabled {
+  background-color: rgb(112 112 112 / .2);
+  border: none;
+}
+
+.input-field input::-webkit-outer-spin-button,
+.input-field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.input-field input[type=number] {
+  appearance: textfield;
+}
+
+
+/********** BUTTON **********/
+
+.input-section-button {
+  align-self: center;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+
+  margin-top: 1rem;
+}
+
+.button {
   padding: .5rem 1rem;
-  color: white;
-  background-color: #09c;
+  color: var(--foreground-color);
+  background-color: rgb(0 144 192 / .5);
   border: none;
   border-radius: .35rem;
   cursor: pointer;
@@ -25,43 +128,26 @@ button {
   transition: 100ms;
 }
 
-button:hover {
-  background-color: #08b;
+.button:hover {
+  background-color: rgb(0 128 176 / .5);
 }
 
-button:active {
+.button:active {
   transform: translateY(1px);
-  background-color: #07a;
+  background-color: rbg(0 112 160 / .5);
 }
 
-/* MARK: ID */
-
-#input-field {
-  padding: .5rem;
-  outline: 2px solid transparent;
-  border: 1px solid rgb(112 112 112 / .5);
-  border-radius: .5rem;
-  transition: 100ms;
-}
-
-#input-field:focus {
-  outline-color: rgb(112 112 255 / .5);
-}
-
-/* MARK: CLASS */
-
-.input-section {
-  display: flex;
-  flex-direction: column;
-
-  margin: auto;
-  max-width: 720px;
-}
-
-.input-section-button {
-  align-self: center;
-  display: flex;
-  gap: .5rem;
-
-  margin-top: 1rem;
+@media all and (min-width: 425px) {
+  .input-section-field {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas: "c reverse f";
+    align-items: center;
+    gap: .5rem;
+    transition: 200ms;
+  }
+  
+  #reverse-check:checked ~ .input-section-field {
+    grid-template-areas: "f reverse c";
+  }
 }
