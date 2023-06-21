@@ -1,16 +1,16 @@
 <div class="container">
   <h1>Temperature Conversion</h1>
-  <form action="" onsubmit="event.preventDefault()" onreset="reverseChange()">
+  <form id="main-form" action="" onsubmit="calculate(event)" onreset="reverseChange()">
     <section class="input-section">
-      <h2 id="conversion-mode">Celsius to Fahrenheit</h2>
-      <input type="checkbox" id="reverse-check" onchange="reverseChange(event)" />
+      <h2 id="conversion-mode">Celcius to Fahrenheit</h2>
+      <input type="checkbox" name="reverse_check" id="reverse-check" onchange="reverseChange(event)" />
       <div class="input-section-field">
         <div class="input-field c">
-          <input type="number" id="c-input-field" />
+          <input type="number" name="celcius" id="c-input-field" />
         </div>
         <label class="button" for="reverse-check">Reverse</label>
         <div class="input-field f">
-          <input type="number" id="f-input-field" />
+          <input type="number" name="fahrenheit" id="f-input-field" />
         </div>
       </div>
       <div class="input-section-button">
@@ -20,6 +20,80 @@
     </section>
   </form>
   <section class="explanation-section">
-    ini adalah section explanation
+    <h2>Explanation</h2>
+    <div id="explanation-c-f">
+      <math display="block">
+        <msub>
+          <mi>S</mi>
+          <mfrac>
+            <mo>(</mo><mi>&#8457;</mi><mo>)</mo>
+          </mfrac>
+        </msub>
+        <mo>=</mo>
+        <mo>(</mo>
+        <msub>
+          <mi>S</mi>
+          <mfrac>
+            <mo>(</mo><mi>&#8451;</mi><mo>)</mo>
+          </mfrac>
+        </msub>
+        <mo>&times;</mo>
+        <mfrac>
+          <mrow><mn>9</mn></mrow>
+          <mn>5</mn>
+        </mfrac>
+        <mo>)</mo>
+        <mo>+</mo>
+        <mn>32</mn>
+      </math>
+      <center>atau</center>
+      <math display="block">
+        <msub>
+          <mi>S</mi>
+          <mfrac>
+            <mo>(</mo><mi>&#8457;</mi><mo>)</mo>
+          </mfrac>
+        </msub>
+        <mo>=</mo>
+        <mo>(</mo>
+        <msub>
+          <mi>S</mi>
+          <mfrac>
+            <mo>(</mo><mi>&#8451;</mi><mo>)</mo>
+          </mfrac>
+        </msub>
+        <mo>&times;</mo>
+        <mn>1.8</mn>
+        <mo>)</mo>
+        <mo>+</mo>
+        <mn>32</mn>
+      </math>
+    </div>
+    <div id="explanation-f-c">
+      <math display="block">
+        <msub>
+          <mi>S</mi>
+          <mfrac>
+            <mo>(</mo><mi>&#8451;</mi><mo>)</mo>
+          </mfrac>
+        </msub>
+        <mo>=</mo>
+        <mo>(</mo>
+        <msub>
+          <mi>S</mi>
+          <mfrac>
+            <mo>(</mo><mi>&#8457;</mi><mo>)</mo>
+          </mfrac>
+        </msub>
+        <mo>-</mo>
+        <mn>32</mn>
+        <mo>)</mo>
+        <mo>&times;</mo>
+        <mfrac>
+          <mrow><mn>5</mn></mrow>
+          <mn>9</mn>
+        </mfrac>
+      </math>
+    </div>
   </section>
 </div>

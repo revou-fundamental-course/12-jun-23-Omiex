@@ -51,18 +51,72 @@ const errorPage = (response) => {
 function reverseChange (event = null) {
   // get DOM
   const conversionMode = document.getElementById('conversion-mode');
-  const celsius = document.getElementById('c-input-field');
+  const celcius = document.getElementById('c-input-field');
   const fahrenheit = document.getElementById('f-input-field');
+  const explanationCF = document.getElementById('explanation-c-f');
+  const explanationFC = document.getElementById('explanation-f-c');
   const checked = event ? event.target.checked : false;
 
   // change conversion mode name
-  conversionMode.innerHTML = checked ? 'Fahrenheit to Celsius' : 'Celsius to Fahrenheit'
+  conversionMode.innerHTML = checked ? 'Fahrenheit to Celcius' : 'Celcius to Fahrenheit'
 
   // disable/enable field
-  celsius.disabled = checked;
+  celcius.disabled = checked;
   fahrenheit.disabled = !checked;
 
   // focus to enabled field
-  if (!checked) celsius.focus();
+  if (!checked) celcius.focus();
   else fahrenheit.focus();
+
+  // show/hide explanation section
+  explanationCF.style.display = !checked ? 'flex' : 'none';
+  explanationFC.style.display = checked ? 'flex' : 'none';
+}
+
+function calculate (event) {
+  event.preventDefault();
+
+  const field = {
+    celcius: document.getElementById('c-input-field'),
+    fahrenheit: document.getElementById('f-input-field'),
+  }
+
+  const formData = new FormData(event.target);
+  const isCelcius = formData.has('celcius') && formData.get('celcius') !== '';
+  const isFahrenheit = formData.has('fahrenheit') && formData.get('fahrenheit') !== '';
+  let from = '';
+  let to = '';
+
+  if (isCelcius) {
+    from = 'celcius';
+    to = 'fahrenheit';
+  } else if (isFahrenheit) {
+    from = 'fahrenheit';
+    to = 'celcius';
+  } else {
+    field.celcius.value = '';
+    field.fahrenheit.value = '';
+    return;
+  }
+
+  const converted = calculateTemp(from, formData.get(from));
+  field[to].value = converted;
+}
+
+function calculateTemp (tempName, value) {
+  let first = 0;
+  let last = 0;
+  switch (tempName) {
+    case 'celcius':
+      first = (value * (9 / 5))
+      last = first + 32;
+      break;
+    case 'fahrenheit':
+      first = (value - 32)
+      last = first * (5 / 9);
+    default:
+      break;
+  }
+
+  return last;
 }

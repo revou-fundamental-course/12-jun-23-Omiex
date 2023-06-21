@@ -60,11 +60,11 @@
 }
 
 .input-field.c::after {
-  content: '\00b0 C';
+  content: '\2103';
 }
 
 .input-field.f::after {
-  content: '\00b0 F';
+  content: '\2109';
 }
 
 .input-field input {
@@ -135,6 +135,20 @@
 .button:active {
   transform: translateY(1px);
   background-color: rbg(0 112 160 / .5);
+}
+
+.explanation-section > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.explanation-section > div math {
+  padding: 1rem;
+  padding-left: 0;
+  background-color: rgb(112 112 112 / .2);
+  border-radius: .3rem;
 }
 
 @media all and (min-width: 425px) {
