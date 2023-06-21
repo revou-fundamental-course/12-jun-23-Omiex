@@ -1,0 +1,222 @@
+:root {
+  --foreground-color: #222;
+  --background-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-color: #eee;
+    --background-color: #000;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: var(--foreground-color);
+  background-color: var(--background-color);
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: justify;
+}
+
+.main-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  min-height: 100vh;
+}
+
+.container {
+  padding: 1rem 2rem;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+
+  width: min(1440px, 100%);
+  height: 3rem;
+  margin: auto;
+  user-select: none;
+  background-color: var(--background-color);
+}
+
+header a img {
+  height: 3rem;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+}
+
+header nav .menu-toggle-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  height: 3rem;
+  width: 3rem;
+  padding-right: 1rem;
+}
+
+header nav .menu-toggle-button label {
+  display: block;
+  position: absolute;
+  padding: 0.5rem;
+  cursor: pointer;
+  line-height: 1rem;
+  font-size: 2rem;
+}
+
+header nav .menu-toggle-button .close {
+  transform: scale(1.2) rotateZ(45deg);
+  transition: 200ms;
+}
+
+header nav .menu-toggle-button .open {
+  transform: none;
+  transition: 200ms;
+}
+
+header nav .menu-toggle-button .close,
+header nav #menu-toggle-check,
+header nav #menu-toggle-check:checked ~ .menu-toggle-button .open {
+  opacity: 0;
+}
+
+header nav .menu-toggle-button .open,
+header nav #menu-toggle-check:checked ~ .menu-toggle-button .close {
+  opacity: 1;
+}
+
+header nav #menu-toggle-check:checked ~ .menu-toggle-button .open {
+  transform: scale(.2) rotateZ(-45deg);
+}
+
+header nav #menu-toggle-check:checked ~ .menu-toggle-button .close {
+  transform: none;
+}
+
+header nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  position: fixed;
+  left: 0;
+  top: -150%;
+  opacity: 0;
+
+  width: 100%;
+  height: calc(100% - 3rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  background-color: var(--background-color);
+
+  transform: scale(1.2);
+  transform-origin: top;
+  transition: top 0ms 200ms, transform 200ms, opacity 200ms;
+}
+
+header nav #menu-toggle-check:checked ~ ul {
+  top: 3rem;
+  opacity: 1;
+  transform: scale(1);
+  transition: top 0ms, transform 200ms, opacity 200ms;
+}
+
+header nav ul li a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: var(--foreground-color);
+  border-bottom: 2px solid transparent;
+  transition: all 100ms;
+}
+
+header nav ul li a.active {
+  background-color: rgb(112 112 112 / 0.3);
+  border-radius: 0.3rem;
+}
+
+header nav ul li a:not(.active) {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+nav ul li a:not(.active):hover {
+  opacity: 1;
+  border-bottom-color: var(--foreground-color);
+}
+
+main {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+}
+
+main article blockquote {
+  padding: 1rem;
+  text-align: center;
+  background-color: rgb(112 112 112 / 0.3);
+  border-radius: 0.3rem;
+}
+
+main article p {
+  text-indent: 3rem;
+}
+
+footer {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  background-color: rgb(48 112 112 / 0.5);
+}
+
+@media all and (min-width: 425px) {
+  .container {
+    padding: 1rem 3rem;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .container {
+    padding: 1rem 4rem;
+  }
+
+  header nav .menu-toggle-button {
+    display: none;
+  }
+
+  header nav #menu-toggle-check:checked ~ ul,
+  header nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    opacity: 1;
+    position: static;
+    padding: 0 1rem;
+
+    transform: none;
+  }
+}

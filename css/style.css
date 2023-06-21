@@ -1,0 +1,189 @@
+.input-section,
+.explanation-section {
+  margin: auto;
+  margin-bottom: 2rem;
+  max-width: 720px;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-section h2 {
+  text-align: center;
+}
+
+#reverse-check {
+  display: none;
+}
+
+.input-section-field {
+  display: grid;
+  grid-template-areas: "c" "reverse" "f";
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+
+#reverse-check:checked ~ .input-section-field {
+  grid-template-areas: "f" "reverse" "c";
+}
+
+.input-section-field label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  margin: 0;
+  border-radius: .5rem;
+}
+
+.input-field {
+  position: relative;
+}
+
+.input-field.c {
+  grid-area: c;
+}
+
+.input-field.f {
+  grid-area: f;
+}
+
+.input-field::after {
+  position: absolute;
+  right: 1rem;
+  height: 3rem;
+  line-height: 3rem;
+  font-weight: 600;
+}
+
+.input-field.c::after {
+  content: '\2103';
+}
+
+.input-field.f::after {
+  content: '\2109';
+}
+
+.input-field input {
+  width: 100%;
+  height: 3rem;
+  padding: 0 2.2rem 0 1rem;
+
+  line-height: 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: right;
+  color: var(--foreground-color);
+  background-color: var(--background-color);
+  outline: 2px solid transparent;
+  border: 1px solid rgb(112 112 112 / .5);
+  border-radius: .5rem;
+
+  transition: 200ms;
+}
+
+.input-field input:focus {
+  outline: 2px solid rgb(0 128 176 / .5);
+}
+
+.input-field input:disabled {
+  background-color: rgb(112 112 112 / .2);
+  border: none;
+}
+
+.input-field input::-webkit-outer-spin-button,
+.input-field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.input-field input[type=number] {
+  appearance: textfield;
+}
+
+
+/********** BUTTON **********/
+
+.input-section-button {
+  align-self: center;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+
+  margin-top: 1rem;
+}
+
+.button {
+  padding: .5rem 1rem;
+  color: var(--foreground-color);
+  background-color: rgb(0 144 192 / .5);
+  border: none;
+  border-radius: .35rem;
+  cursor: pointer;
+  user-select: none;
+  transition: 100ms;
+}
+
+.button:hover {
+  background-color: rgb(0 128 176 / .5);
+}
+
+.button:active {
+  transform: translateY(1px);
+  background-color: rbg(0 112 160 / .5);
+}
+
+.explanation-section > div {
+  display: none;
+  align-items: baseline;
+  justify-content: center;
+  grid-template-columns: repeat(2, max-content);
+  column-gap: 2rem;
+  row-gap: .5rem;
+}
+
+.explanation-section > div > div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.explanation-section > div .left {
+  grid-row: 1 / span 5;
+}
+
+.explanation-section > div > div math {
+  padding: 1rem;
+  padding-left: 0;
+  background-color: rgb(112 112 112 / .2);
+  border-radius: .3rem;
+}
+
+.explanation-section > div > div:not(.left)::before {
+  content: '\003D';
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: -1.25rem;
+  height: 100%;
+}
+
+@media all and (min-width: 425px) {
+  .input-section-field {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas: "c reverse f";
+    align-items: center;
+    gap: .5rem;
+    transition: 200ms;
+  }
+  
+  #reverse-check:checked ~ .input-section-field {
+    grid-template-areas: "f reverse c";
+  }
+}

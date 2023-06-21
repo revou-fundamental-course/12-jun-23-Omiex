@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script defer src="/js/script.js"></script>
+    <title>RevoU Assignment</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header>
+        <div></div>
+        <nav>
+          <input type="checkbox" id="menu-toggle-check" />
+          <div class="menu-toggle-button">
+            <label for="menu-toggle-check" class="open">&#8801;</label>
+            <label for="menu-toggle-check" class="close">&times;</label>
+          </div>
+          <ul>
+            <li><a onclick="changePage('home', event)" id="home-page">Home</a></li>
+            <li><a onclick="changePage('brief', event)" id="brief-page">Brief</a></li>
+            <li><a onclick="changePage('about', event)" id="about-page">About</a></li>
+            <li><a onclick="changePage('contact', event)" id="contact-page">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main id="app"></main>
+
+      <footer>
+        Crafted with &hearts; by Omiex
+      </footer>
+    </div>
+  </body>
+</html>
