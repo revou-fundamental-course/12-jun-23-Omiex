@@ -137,9 +137,12 @@
   background-color: rbg(0 112 160 / .5);
 }
 
+
+/********** EXPLANATION **********/
+
 .explanation-section > div {
   display: none;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
   grid-template-columns: repeat(2, auto);
   column-gap: 2rem;
@@ -155,8 +158,14 @@
   flex-wrap: wrap;
 }
 
+.explanation-section > div .blank-space {
+  grid-column: 1 / 2;
+  grid-row: 2 / span 5;
+}
+
 .explanation-section > div .left {
-  grid-row: 1 / span 5;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 }
 
 .explanation-section > div > div math {
@@ -166,7 +175,7 @@
   border-radius: .3rem;
 }
 
-.explanation-section > div > div:not(.left)::before {
+.explanation-section > div > div:not(.left):not(.blank-space)::before {
   content: '\003D';
   display: flex;
   align-items: center;
