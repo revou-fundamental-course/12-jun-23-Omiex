@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Temperature Conversion</h1>
-  <form id="main-form" action="" onsubmit="calculate(event)" onreset="reverseChange()">
+  <form id="main-form" action="" onsubmit="calculate(event)" onreset="resetForm()">
     <section class="input-section">
       <h2 id="conversion-mode">Celcius to Fahrenheit</h2>
       <input type="checkbox" name="reverse_check" id="reverse-check" onchange="reverseChange(event)" />
@@ -22,78 +22,145 @@
   <section class="explanation-section">
     <h2>Explanation</h2>
     <div id="explanation-c-f">
-      <math display="block">
-        <msub>
-          <mi>S</mi>
+      <div class="left">
+        <math>
+          <msub>
+            <mi>S</mi>
+            <mfrac>
+              <mo>(</mo><mi>&#8457;</mi><mo>)</mo>
+            </mfrac>
+          </msub>
+        </math>
+      </div>
+
+      <div>
+        <math>
+          <mo>(</mo>
+          <msub>
+            <mi>S</mi>
+            <mfrac>
+              <mo>(</mo><mi>&#8451;</mi><mo>)</mo>
+            </mfrac>
+          </msub>
+          <mo>&times;</mo>
           <mfrac>
-            <mo>(</mo><mi>&#8457;</mi><mo>)</mo>
+            <mrow><mn>9</mn></mrow>
+            <mn>5</mn>
           </mfrac>
-        </msub>
-        <mo>=</mo>
-        <mo>(</mo>
-        <msub>
-          <mi>S</mi>
+          <mo>)</mo>
+          <mo>+</mo>
+          <mn>32</mn>
+        </math>
+        <center>atau</center>
+        <math>
+          <mo>(</mo>
+          <msub>
+            <mi>S</mi>
+            <mfrac>
+              <mo>(</mo><mi>&#8451;</mi><mo>)</mo>
+            </mfrac>
+          </msub>
+          <mo>&times;</mo>
+          <mn>1.8</mn>
+          <mo>)</mo>
+          <mo>+</mo>
+          <mn>32</mn>
+        </math>
+      </div>
+
+      <div>
+        <math>
+          <mo>(</mo>
+          <mn id="c-value"></mn>
+          <mo>&times;</mo>
           <mfrac>
-            <mo>(</mo><mi>&#8451;</mi><mo>)</mo>
+            <mrow><mn>9</mn></mrow>
+            <mn>5</mn>
           </mfrac>
-        </msub>
-        <mo>&times;</mo>
-        <mfrac>
-          <mrow><mn>9</mn></mrow>
-          <mn>5</mn>
-        </mfrac>
-        <mo>)</mo>
-        <mo>+</mo>
-        <mn>32</mn>
-      </math>
-      <center>atau</center>
-      <math display="block">
-        <msub>
-          <mi>S</mi>
-          <mfrac>
-            <mo>(</mo><mi>&#8457;</mi><mo>)</mo>
-          </mfrac>
-        </msub>
-        <mo>=</mo>
-        <mo>(</mo>
-        <msub>
-          <mi>S</mi>
-          <mfrac>
-            <mo>(</mo><mi>&#8451;</mi><mo>)</mo>
-          </mfrac>
-        </msub>
-        <mo>&times;</mo>
-        <mn>1.8</mn>
-        <mo>)</mo>
-        <mo>+</mo>
-        <mn>32</mn>
-      </math>
+          <mo>)</mo>
+          <mo>+</mo>
+          <mn>32</mn>
+        </math>
+      </div>
+
+      <div>
+        <math>
+          <mn id="c-first"></mn>
+          <mo>+</mo>
+          <mn>32</mn>
+        </math>
+      </div>
+
+      <div>
+        <math>
+          <mn id="c-last"></mn>
+        </math>
+      </div>
     </div>
+
     <div id="explanation-f-c">
-      <math display="block">
-        <msub>
-          <mi>S</mi>
+      <div class="left">
+        <math>
+          <msub>
+            <mi>S</mi>
+            <mfrac>
+              <mo>(</mo><mi>&#8451;</mi><mo>)</mo>
+            </mfrac>
+          </msub>
+        </math>
+      </div>
+
+      <div>
+        <math>
+          <mo>(</mo>
+          <msub>
+            <mi>S</mi>
+            <mfrac>
+              <mo>(</mo><mi>&#8457;</mi><mo>)</mo>
+            </mfrac>
+          </msub>
+          <mo>-</mo>
+          <mn>32</mn>
+          <mo>)</mo>
+          <mo>&times;</mo>
           <mfrac>
-            <mo>(</mo><mi>&#8451;</mi><mo>)</mo>
+            <mrow><mn>5</mn></mrow>
+            <mn>9</mn>
           </mfrac>
-        </msub>
-        <mo>=</mo>
-        <mo>(</mo>
-        <msub>
-          <mi>S</mi>
+        </math>
+      </div>
+
+      <div>
+        <math>
+          <mo>(</mo>
+          <mn id="f-value"></mn>
+          <mo>-</mo>
+          <mn>32</mn>
+          <mo>)</mo>
+          <mo>&times;</mo>
           <mfrac>
-            <mo>(</mo><mi>&#8457;</mi><mo>)</mo>
+            <mrow><mn>5</mn></mrow>
+            <mn>9</mn>
           </mfrac>
-        </msub>
-        <mo>-</mo>
-        <mn>32</mn>
-        <mo>)</mo>
-        <mo>&times;</mo>
-        <mfrac>
-          <mrow><mn>5</mn></mrow>
-          <mn>9</mn>
-        </mfrac>
-      </math>
+        </math>
+      </div>
+
+      <div>
+        <math>
+          <mn id="f-first"></mn>
+          <mo>&times;</mo>
+          <mfrac>
+            <mrow><mn>5</mn></mrow>
+            <mn>9</mn>
+          </mfrac>
+        </math>
+      </div>
+
+      <div>
+        <math>
+          <mn id="f-last"></mn>
+        </math>
+      </div>
     </div>
   </section>
 </div>
