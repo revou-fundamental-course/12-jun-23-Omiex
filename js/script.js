@@ -8,7 +8,7 @@ changePage('home');
 
 // handle page changing
 function changePage (page) {
-  fetch(`/pages/${page}.html`) // get requested page
+  fetch(`./pages/${page}.html`) // get requested page
     .then((response) => {
       return response.ok ? response.text() : errorPage(response); // use the requested page or error page
     })
